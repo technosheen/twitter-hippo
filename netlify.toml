@@ -1,0 +1,15 @@
+[build]
+  publish = "."
+  command = "echo 'No build command needed'"
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+
+[context.production.environment]
+  NODE_VERSION = "18"
+
+# Enable Identity and Git Gateway
+[build.environment]
+  NETLIFY_USE_YARN = "true"
