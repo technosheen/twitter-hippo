@@ -12,3 +12,5 @@ coverage/
 .cache/
 dist/
 build/
+# Local Netlify folder
+.netlify
