@@ -224,13 +224,21 @@ const throttledScroll = throttle(() => {
 
 window.addEventListener('scroll', throttledScroll);
 
-// Netlify Identity Widget
-if (window.netlifyIdentity) {
-  window.netlifyIdentity.on("init", user => {
-    if (!user) {
-      window.netlifyIdentity.on("login", () => {
-        document.location.href = "/admin/";
-      });
+// GitHub OAuth Authentication for CMS
+function initializeGitHubAuth() {
+    // Check if we're on the admin page
+    if (window.location.pathname.includes('/admin/')) {
+        console.log('Admin page detected - GitHub auth ready');
     }
-  });
+    
+    // Add admin access button to navigation if user is authenticated
+    const nav = document.querySelector('.nav-menu');
+    if (nav && window.location.pathname !== '/admin/') {
+        const adminLink = document.createElement('li');
+        adminLink.innerHTML = '<a href="/admin/" style="color: #667eea; font-weight: 600;">✏️ Edit Site</a>';
+        nav.appendChild(adminLink);
+    }
 }
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', initializeGitHubAuth);

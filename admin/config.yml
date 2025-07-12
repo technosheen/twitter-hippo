@@ -1,9 +1,21 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: YOUR_GITHUB_USERNAME/twitter-hippo
   branch: main
+  auth_endpoint: https://api.netlify.com/api/v1/oauth/github
 
 media_folder: "static/images"
 public_folder: "/images"
+
+# Enable editorial workflow for content review
+publish_mode: editorial_workflow
+
+# Site URL for preview
+site_url: https://your-site-name.netlify.app
+display_url: https://your-site-name.netlify.app
+
+# Logo and branding
+logo_url: https://your-site-name.netlify.app/images/logo.png
 
 collections:
   - name: "pages"
